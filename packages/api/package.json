@@ -1,0 +1,31 @@
+{
+    "name": "@polyium/api",
+    "version": "0.0.0",
+    "description": "...",
+    "type": "module",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "private": true,
+    "dependencies": {
+        "express": "^5.2.1",
+        "@polyium/api": "../api",
+        "@polyium/logger": "../logger",
+        "@polyium/schema": "../schema"
+
+    },
+    "devDependencies": {
+        "@types/node": "latest",
+        "@types/express": "latest"
+    },
+    "keywords": [],
+    "author": {
+        "url": "https://github.com/Segmentational",
+        "name": "Jacob B. Sanders"
+    },
+    "eslintConfig": {
+        "settings": {
+            "extends": "../.."
+        }
+    }
+}

@@ -1,0 +1,68 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://polyium.com/schemas/apple-local-dx-runtime-configuration.schema.json",
+    "title": "Runtime Configuration",
+    "type": "object",
+    "properties": {
+        "application-id": {
+            "type": [
+                "string",
+                "number"
+            ],
+            "description": "The application identifier.",
+            "examples": [
+                0
+            ],
+            "default": 0
+        },
+        "client-id": {
+            "type": "string",
+            "description": "The client identifier.",
+            "examples": [
+                "Iv23li27V6ZWzwTcWiWE"
+            ],
+            "default": "Iv23li27V6ZWzwTcWiWE"
+        },
+        "code-verifier": {
+            "type": "string",
+            "minLength": 128,
+            "description": "The PKCE token used for code challenge generation. Note that the eventually generated code-challenge is a base64 encoded string generated from a cryptographically secure token, SHA256 hashed. Padding *should not* be included (ends in \"=\").",
+            "examples": [
+                "6VJGR9S3eX16cdRtKyrPsfJ_lXPwT0SMEVJbkHHSQuDOy4I8RxHGojH1HVq7qt5AVhR0tdny9f2wPUrejLN58YFBtr3J6q_W8U-h_V8Akak6hvOqhsjuza7tM02UMdU6ePhljgQCdOt8RSDgDbZaXMOA2V9dBjBX3y6Wpaq7DVo"
+            ]
+        },
+        "private-key": {
+            "type": "string",
+            "description": "The private key path.",
+            "default": "assets/private-key.pem",
+            "format": "file-path",
+            "examples": [
+                "assets/private-key.pem"
+            ]
+        },
+        "webhook-secret": {
+            "type": "string",
+            "description": "The webhook secret.",
+            "examples": [
+                "webhook-abcdefghijklmnopqrstuvwxyz"
+            ]
+        },
+        "enterprise-hostname": {
+            "type": [
+                "string"
+            ],
+            "description": "An optional enterprise hostname.",
+            "examples": [
+                "github.com"
+            ],
+            "default": "github.com"
+        }
+    },
+    "required": [
+        "application-id",
+        "private-key",
+        "webhook-secret",
+        "enterprise-hostname",
+        "code-verifier"
+    ]
+}
