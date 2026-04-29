@@ -26,10 +26,10 @@
         "target": "esnext",
         // For nodejs:
         "lib": [
-            "ESNext",
+            "ESNext"
         ],
         "types": [
-            "node",
+            "node"
         ],
         "resolveJsonModule": true,
         "resolvePackageJsonExports": true,
@@ -71,7 +71,6 @@
         ".github",
         ".idea",
         ".vscode",
-
         "ci",
         "distribution",
         "coverage",

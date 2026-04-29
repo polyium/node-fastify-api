@@ -1,20 +1,20 @@
 #!/usr/bin/env python
 
+import base64
+import hashlib
+import logging
+import os
+import pathlib
 import re
 import secrets
-import hashlib
-import base64
 import shlex
-import subprocess
-import os
 import shutil
+import subprocess
 import sys
-import logging
-import pathlib
-
 from typing import Union, Any, Optional
 
 handler = logging.StreamHandler()
+
 
 class Formatter(logging.Formatter):
     expression = r"(?<!\w)'([^\s']+)'(?!\w)"
@@ -25,6 +25,7 @@ class Formatter(logging.Formatter):
         v = super().format(record)  # .replace("'", "%s" % '"')
 
         return re.sub(self.expression, self.substitution, v)
+
 
 formatter = Formatter("[%(levelname)s] (%(name)s) %(message)s")
 
@@ -38,6 +39,7 @@ logger.propagate = False
 
 bits: int = 128
 
+
 def main():
     verifier: str = secrets.token_urlsafe(bits)
 
@@ -48,23 +50,26 @@ def main():
             raw = shlex.join([executable])
             args = shlex.split(raw)
 
-            run = subprocess.Popen(args, shell=False, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            run = subprocess.Popen(args, shell=False, stdin=subprocess.PIPE, stdout=subprocess.PIPE,
+                                   stderr=subprocess.PIPE)
 
             run.stdin.writelines([verifier.encode("ascii")])
             run.stdin.close()
 
-            returncode = run.wait(timeout = 10)
+            returncode = run.wait(timeout=10)
             if returncode != 0:
                 logger.error("Failed to copy to clipboard. Error: %s", run.stderr.read().decode("utf-8"))
                 exit(1)
 
-            sys.stdout.write("A cryptographically secure token has been successfully created for a PKCE code-verification." + "\n")
+            sys.stdout.write(
+                "A cryptographically secure token has been successfully created for a PKCE code-verification." + "\n")
         else:
             sys.stdout.write(verifier + "\n")
     else:
         sys.stdout.write(verifier + "\n")
 
     exit(0)
+
 
 if __name__ == "__main__":
     main()

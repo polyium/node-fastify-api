@@ -11,7 +11,9 @@
     ],
     "overrides": [
         {
-            "files": ["*.ts"],
+            "files": [
+                "*.ts"
+            ],
             "rules": {
                 "no-undef": "off"
             }
@@ -62,7 +64,13 @@
         },
         "import/resolver": {
             "node": {
-                "extensions": [".js", ".jsx", ".ts", ".tsx", ".test.ts"]
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx",
+                    ".test.ts"
+                ]
             }
         }
     },

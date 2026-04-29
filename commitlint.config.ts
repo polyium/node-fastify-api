@@ -3,7 +3,7 @@ export const Configuration = {
      * Resolve and load @commitlint/config-conventional from node_modules.
      * Referenced packages must be installed
      */
-    extends: [ "@commitlint/config-conventional" ],
+    extends: ["@commitlint/config-conventional"],
     /*
      * Resolve and load @commitlint/format from node_modules.
      * Referenced package must be installed
@@ -17,15 +17,15 @@ export const Configuration = {
      * [2] Value
      */
     rules: {
-        "type-enum": [ 2, "always", [ "Feature", "Fix", "Chore", "Documentation", "Style", "Refactor", "Test", "Reversion", "Syntax", "Bug", "CI", "Bump" ] ],
-        "type-case": [ 2, "always", [ "start-case", "sentence-case", "kebab-case" ] ],
-        "scope-case": [ 2, "always", [ "start-case", "sentence-case", "kebab-case" ] ],
-        "subject-case": [ 2, "always", [ "lower-case", "upper-case", "camel-case", "kebab-case", "pascal-case", "sentence-case", "snake-case", "start-case" ] ]
+        "type-enum": [2, "always", ["Feature", "Fix", "Chore", "Documentation", "Style", "Refactor", "Test", "Reversion", "Syntax", "Bug", "CI", "Bump"]],
+        "type-case": [2, "always", ["start-case", "sentence-case", "kebab-case"]],
+        "scope-case": [2, "always", ["start-case", "sentence-case", "kebab-case"]],
+        "subject-case": [2, "always", ["lower-case", "upper-case", "camel-case", "kebab-case", "pascal-case", "sentence-case", "snake-case", "start-case"]]
     },
     /*
      * Functions that return true if commitlint should ignore the given message.
      */
-    ignores: [ (commit: string) => commit === "" ],
+    ignores: [(commit: string) => commit === ""],
     /*
      * Whether commitlint uses the default ignore rules.
      */
