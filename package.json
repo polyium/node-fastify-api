@@ -2,6 +2,7 @@
     "name": "@polyium/node-fastify-api",
     "version": "0.0.0",
     "description": "...",
+    "type": "module",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "node ./distribution/packages/api",
