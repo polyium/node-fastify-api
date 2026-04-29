@@ -1,12 +1,10 @@
-import HTTP from "http";
-
-export const methods = () => {
-    return HTTP.METHODS && HTTP.METHODS.map((method) => {
-        return method.toLowerCase();
-    });
-};
-
-export enum Enumeration {
+/**
+ * Supported HTTP method identifiers.
+ *
+ * Each enum member name is the internal TypeScript key used by the schema
+ * package, and each value is the serialized HTTP method string.
+ */
+export enum Methods {
     get = "get",
     post = "post",
     put = "put",
@@ -35,37 +33,66 @@ export enum Enumeration {
     connect = "connect"
 }
 
-export const Methods = () => {
-    return [
-        "get",
-        "post",
-        "put",
-        "head",
-        "delete",
-        "options",
-        "trace",
-        "copy",
-        "lock",
-        "mkcol",
-        "move",
-        "purge",
-        "propfind",
-        "proppatch",
-        "unlock",
-        "report",
-        "mkactivity",
-        "checkout",
-        "merge",
-        "m-search",
-        "notify",
-        "subscribe",
-        "unsubscribe",
-        "patch",
-        "search",
-        "connect"
-    ];
-};
+/**
+ * A valid key from the {@link Methods} enum.
+ */
+type Key = keyof typeof Methods;
 
-export default Methods;
+/**
+ * Wraps an HTTP method enum key and exposes normalized string representations.
+ */
+class Method {
+    /**
+     * Creates an HTTP method wrapper.
+     *
+     * @param $ - The key of the HTTP method in the {@link Methods} enum.
+     */
+    constructor(
+        private readonly $: Key
+    ) {}
 
-export type Method = keyof typeof Enumeration;
+    /**
+     * The enum key used to look up the HTTP method value.
+     *
+     * @returns The selected {@link Methods} enum key.
+     */
+    private get key(): Key {
+        return this.$;
+    }
+
+    /**
+     * The serialized HTTP method value.
+     *
+     * @returns The HTTP method string associated with the selected enum key.
+     */
+    private get value(): string {
+        return Methods[this.key];
+    }
+
+    /**
+     * The uppercase string representation of the HTTP method.
+     *
+     * @returns The HTTP method value converted to uppercase.
+     */
+    get uppercase(): string {
+        return this.value.toUpperCase();
+    }
+
+    /**
+     * The lowercase string representation of the HTTP method.
+     *
+     * @returns The HTTP method value converted to lowercase.
+     */
+    get lowercase(): string {
+        return this.value.toLowerCase();
+    }
+
+    /**
+     * The string representation of the HTTP method.
+     *
+     * @returns The serialized HTTP method value.
+     */
+    public get string(): string {
+        return this.value;
+    }
+}

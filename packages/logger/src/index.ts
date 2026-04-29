@@ -86,11 +86,11 @@ export namespace Debugger {
         private color = ANSI.create();
         
         private prefix = {
-            debug: ["[", this.color.bold.cyan("Debug"), "]"].join(""),
-            info: ["[", this.color.bold.blue("Informational"), "]"].join(""),
-            warn: ["[", this.color.bold.yellow("Warning"), "]"].join(""),
-            error: ["[", this.color.bold.red("Error"), "]"].join(""),
-            log: ["[", this.color.bold.green("Log"), "]"].join("")
+            debug: [ "[", this.color.bold.cyan("Debug"), "]" ].join(""),
+            info: [ "[", this.color.bold.blue("Informational"), "]" ].join(""),
+            warn: [ "[", this.color.bold.yellow("Warning"), "]" ].join(""),
+            error: [ "[", this.color.bold.red("Error"), "]" ].join(""),
+            log: [ "[", this.color.bold.green("Log"), "]" ].join("")
         };
         
         private colorize: (context?: string) => string;
@@ -118,7 +118,7 @@ export namespace Debugger {
         private static debug(instance: Logger) {
             return {
                 debug: (input: object | string) => {
-                    console.log(instance.colorize(), instance.prefix.debug, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.colorize(), instance.prefix.debug, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -126,7 +126,7 @@ export namespace Debugger {
                     }));
                 },
                 info: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.info, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.info, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -134,7 +134,7 @@ export namespace Debugger {
                     }));
                 },
                 warn: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -142,7 +142,7 @@ export namespace Debugger {
                     }));
                 },
                 error: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -156,7 +156,7 @@ export namespace Debugger {
             return {
                 debug: () => OS.devNull,
                 info: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.info, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.info, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -164,7 +164,7 @@ export namespace Debugger {
                     }));
                 },
                 warn: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -172,7 +172,7 @@ export namespace Debugger {
                     }));
                 },
                 error: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -187,7 +187,7 @@ export namespace Debugger {
                 debug: () => OS.devNull,
                 info: () => OS.devNull,
                 warn: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -195,7 +195,7 @@ export namespace Debugger {
                     }));
                 },
                 error: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
@@ -211,7 +211,7 @@ export namespace Debugger {
                 info: () => OS.devNull,
                 warn: () => OS.devNull,
                 error: (input: object | string) => {
-                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : {...input}, {
+                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : { ...input }, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,

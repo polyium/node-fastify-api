@@ -14,7 +14,6 @@
     "author": "",
     "license": "MIT",
     "types": "module",
-    "dependencies": {},
     "devDependencies": {
         "@jest/globals": "^30.3.0",
         "@jest/types": "^30.3.0",
@@ -24,9 +23,12 @@
         "@types/ws": "^8.18.1",
         "eslint": "^9.39.4",
         "eslint-plugin-import": "^2.32.0",
+        "globals": "^17.5.0",
         "jest": "^30.3.0",
+        "jiti": "^2.6.1",
         "ts-jest": "^29.4.9",
-        "typescript": "^6.0.3"
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.59.1"
     },
     "private": true,
     "workspaces": {

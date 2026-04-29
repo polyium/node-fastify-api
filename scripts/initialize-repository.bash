@@ -115,6 +115,8 @@ function main() {
 
     npm install --save-dev "@jest/globals" "@jest/types" "@types/jest" "@types/node"
 
+    npm install --save-dev "eslint" "typescript-eslint" "eslint-plugin-import" "globals"
+
     npm install --save-prod "fastify"
 
     npm install --save-dev "@types/fastify"
