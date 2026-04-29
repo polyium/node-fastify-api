@@ -1,4 +1,8 @@
 {
     "extends": "../tsconfig.json",
-    "compilerOptions": {"lib": ["DOM"]}
+    "compilerOptions": {
+        "lib": [
+            "DOM"
+        ]
+    }
 }

@@ -1,6 +1,6 @@
+import ANSI from "ansi-colors";
 import OS from "os";
 import Utility from "util";
-import ANSI from "ansi-colors";
 
 export namespace Debugger {
     enum Level {
@@ -17,7 +17,7 @@ export namespace Debugger {
      * @constructor
      */
     const Depth = (depth: Depth = 1) => {
-        return ( typeof depth === "number" ) ? depth : ( depth === "Infinity" ) ? Infinity : 1;
+        return (typeof depth === "number") ? depth : (depth === "Infinity") ? Infinity : 1;
     };
     
     enum Color {
@@ -47,7 +47,7 @@ export namespace Debugger {
          * @example
          * ["Routing", "magenta"]
          * */
-        module: [ string, Colors ],
+        module: [string, Colors],
         /***
          * The Debugger Log-Level, and Color for the Logging Enumeration
          *
@@ -56,7 +56,7 @@ export namespace Debugger {
          * @example
          * ["Debug", "gray"]
          * */
-        level: [ Levels, Colors ],
+        level: [Levels, Colors],
         /***
          * Depth for Output, and whether Output should be Sorted Alphabetically
          *
@@ -68,7 +68,7 @@ export namespace Debugger {
          * @example
          * ["Infinity", false]
          * */
-        depth: [ Depth, boolean ]
+        depth: [Depth, boolean]
     }
     
     export class Logger implements Type {
@@ -86,11 +86,11 @@ export namespace Debugger {
         private color = ANSI.create();
         
         private prefix = {
-            debug: [ "[", this.color.bold.cyan( "Debug" ), "]" ].join( "" ),
-            info: [ "[", this.color.bold.blue( "Informational" ), "]" ].join( "" ),
-            warn: [ "[", this.color.bold.yellow( "Warning" ), "]" ].join( "" ),
-            error: [ "[", this.color.bold.red( "Error" ), "]" ].join( "" ),
-            log: [ "[", this.color.bold.green( "Log" ), "]" ].join( "" )
+            debug: ["[", this.color.bold.cyan("Debug"), "]"].join(""),
+            info: ["[", this.color.bold.blue("Informational"), "]"].join(""),
+            warn: ["[", this.color.bold.yellow("Warning"), "]"].join(""),
+            error: ["[", this.color.bold.red("Error"), "]"].join(""),
+            log: ["[", this.color.bold.green("Log"), "]"].join("")
         };
         
         private colorize: (context?: string) => string;
@@ -98,16 +98,16 @@ export namespace Debugger {
         constructor(settings: Input) {
             this.input = settings;
             
-            const logger = ( settings.level[ 0 ] === "Debug" ) ? Logger.debug( this )
-                : ( settings.level[ 0 ] === "Informational" ) ? Logger.info( this )
-                    : ( settings.level[ 0 ] === "Warning" ) ? Logger.warn( this )
-                        : Logger.error( this );
+            const logger = (settings.level[0] === "Debug") ? Logger.debug(this)
+                : (settings.level[0] === "Informational") ? Logger.info(this)
+                    : (settings.level[0] === "Warning") ? Logger.warn(this)
+                        : Logger.error(this);
             
-            this.context = this.input.module[ 0 ];
-            this.colorize = (context = this.context) => "[" + Reflect.get( this.color, this.input.module[ 1 ] )( context ) + "]";
+            this.context = this.input.module[0];
+            this.colorize = (context = this.context) => "[" + Reflect.get(this.color, this.input.module[1])(context) + "]";
             
-            this.depth = Depth( this.input.depth[ 0 ] );
-            this.sorting = this.input.depth[ 1 ];
+            this.depth = Depth(this.input.depth[0]);
+            this.sorting = this.input.depth[1];
             
             this.debug = logger.debug;
             this.info = logger.info;
@@ -118,36 +118,36 @@ export namespace Debugger {
         private static debug(instance: Logger) {
             return {
                 debug: (input: object | string) => {
-                    console.log( instance.colorize(), instance.prefix.debug, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.colorize(), instance.prefix.debug, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 },
                 info: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.info, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.info, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 },
                 warn: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.warn, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 },
                 error: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.error, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 }
             };
         }
@@ -156,28 +156,28 @@ export namespace Debugger {
             return {
                 debug: () => OS.devNull,
                 info: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.info, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.info, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 },
                 warn: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.warn, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 },
                 error: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.error, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 }
             };
         }
@@ -187,20 +187,20 @@ export namespace Debugger {
                 debug: () => OS.devNull,
                 info: () => OS.devNull,
                 warn: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.warn, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.warn, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 },
                 error: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.error, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 }
             };
         }
@@ -211,12 +211,12 @@ export namespace Debugger {
                 info: () => OS.devNull,
                 warn: () => OS.devNull,
                 error: (input: object | string) => {
-                    console.log( instance.context, instance.prefix.error, Utility.inspect( ( typeof input === "string" ) ? input : { ... input }, {
+                    console.log(instance.context, instance.prefix.error, Utility.inspect((typeof input === "string") ? input : {...input}, {
                         colors: true,
                         sorted: instance.sorting,
                         depth: instance.depth,
                         compact: true
-                    } ) );
+                    }));
                 }
             };
         }
@@ -229,7 +229,7 @@ export namespace Debugger {
      * @param settings
      */
     export function hydrate(settings: Input) {
-        return new Logger( settings );
+        return new Logger(settings);
     }
     
     export interface Type {

@@ -1,9 +1,9 @@
 import HTTP from "http";
 
 export const methods = () => {
-    return HTTP.METHODS && HTTP.METHODS.map( (method) => {
+    return HTTP.METHODS && HTTP.METHODS.map((method) => {
         return method.toLowerCase();
-    } );
+    });
 };
 
 export enum Enumeration {

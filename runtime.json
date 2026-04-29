@@ -1,8 +1,0 @@
-{
-    "application-id": 2717934,
-    "client-id": "Iv23li27V6ZWzwTcWiWE",
-    "private-key": "assets/local-dx.2026-01-23.private-key.pem",
-    "webhook-secret": "sXaFwAUIKaAAWcIkbl_qyi1gTo7tjtQNLSP19DCDRrc",
-    "enterprise-hostname": "github.com",
-    "code-verifier": "qZpe08B8lzUz8wgCYlAvzYss_ccrPKMwsyS2tdvotyU"
-}

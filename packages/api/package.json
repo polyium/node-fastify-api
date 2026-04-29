@@ -12,7 +12,6 @@
         "@polyium/api": "../api",
         "@polyium/logger": "../logger",
         "@polyium/schema": "../schema"
-
     },
     "devDependencies": {
         "@types/node": "latest",
